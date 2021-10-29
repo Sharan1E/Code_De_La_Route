@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Code_De_La_Route</string>
     <string name="ingame_app_name">MISSION CODE</string>
+    <string name= "first_page_traning_button" >Entrainement</string>
+    <string name= "first_page_exam_button" >Examen Blanc</string>
+    <string name= "first_page_info_button" >i</string>
+    <string name="app_logo">Logo_appli</string>
 </resources>
