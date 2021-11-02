@@ -1,8 +1,19 @@
 <resources>
+
+    <!-- Main_Acitivity -->
     <string name="app_name">Code_De_La_Route</string>
     <string name="ingame_app_name">MISSION CODE</string>
     <string name= "first_page_traning_button" >Entrainement</string>
     <string name= "first_page_exam_button" >Examen Blanc</string>
     <string name= "first_page_info_button" >i</string>
     <string name="app_logo">Logo_appli</string>
+
+    <!-- Info_Acitivity -->
+    <string name="info_page_back_button">Back</string>
+    <string name="info_page_text_part1">Application de code de la route</string>
+    <string name="info_page_text_part2">Fait par le binôme:</string>
+    <string name="info_page_text_part3">Sharan Varatharajah</string>
+    <string name="info_page_text_part4">Saïd Salama</string>
+    <string name="info_page_text_part5">&amp;</string>
+
 </resources>

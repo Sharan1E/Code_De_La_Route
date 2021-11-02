@@ -15,10 +15,10 @@
         android:text="@string/ingame_app_name"
         android:textColor="#7B8D97"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/button_training_from_home_page"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline4"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
@@ -29,14 +29,14 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintDimensionRatio="23:18"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_training_from_home_page"
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:background="@drawable/rounded_corners"
@@ -46,14 +46,14 @@
         android:textColor="#FFF"
         android:textSize="26sp"
         app:backgroundTint="#FF8C33"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/button_exam_from_home_page"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline4"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_exam_from_home_page"
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:background="@drawable/rounded_corners"
@@ -63,16 +63,16 @@
         android:textColor="#FFF"
         android:textSize="26sp"
         app:backgroundTint="#FF8C33"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/button_info_from_home_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline4"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button_training_from_home_page" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button_info_from_home_page"
         android:layout_width="63dp"
         android:layout_height="62dp"
         android:background="@drawable/rounded_corners"
@@ -85,10 +85,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        app:layout_constraintRight_toRightOf="@id/guideline4"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button_exam_from_home_page" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
