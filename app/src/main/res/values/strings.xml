@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Main_Acitivity -->
-    <string name="app_name">Code_De_La_Route</string>
+    <string name="app_name">Mission Code</string>
     <string name="ingame_app_name">MISSION CODE</string>
     <string name= "first_page_traning_button" >Entrainement</string>
     <string name= "first_page_exam_button" >Examen Blanc</string>
