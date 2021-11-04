@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.orange)));
-
         Button button = findViewById(R.id.button_info_from_home_page);
         button.setOnClickListener(view -> openInformationsActivity());
     }
