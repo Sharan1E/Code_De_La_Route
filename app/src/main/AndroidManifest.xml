@@ -10,7 +10,6 @@
         android:theme="@style/Theme.Code_De_La_Route" >
         <activity
             android:name=".Informations_Activity"
-            android:label="@string/title_information"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
