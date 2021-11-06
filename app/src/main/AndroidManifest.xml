@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.code_de_la_route" >
+    package="com.example.code_de_la_route">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Code_De_La_Route" >
+        android:theme="@style/Theme.Code_De_La_Route">
+        <activity
+            android:name=".Theme_Choice_Activity"
+            android:exported="true" />
         <activity
             android:name=".Informations_Activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Code_De_La_Route.NoActionBar"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/Theme.Code_De_La_Route.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
