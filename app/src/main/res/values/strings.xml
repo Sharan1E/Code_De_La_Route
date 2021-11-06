@@ -18,6 +18,9 @@
 
     <!-- Theme_Choice_Acitivity -->
     <string name="title_theme_choice">Choix du thème</string>
+    <string name="theme_description">Theme_Description</string>
+    <string name="theme_number">Theme_number</string>
+    <string name="todo">Theme_Logo</string>
 
 
 </resources>

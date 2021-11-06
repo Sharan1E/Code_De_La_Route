@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
+
 import java.util.List;
 
 public class CustomListAdapter  extends BaseAdapter {
 
-    private List<Listview_element> listData;
-    private LayoutInflater layoutInflater;
-    private Context context;
+    private final List<Listview_element> listData;
+    private final LayoutInflater layoutInflater;
+    private final Context context;
 
     public CustomListAdapter(Context aContext,  List<Listview_element> listData) {
         this.context = aContext;
@@ -43,27 +43,27 @@ public class CustomListAdapter  extends BaseAdapter {
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.listview_layout, null);
             holder = new ViewHolder();
-            holder.flagView = (ImageView) convertView.findViewById(R.id.imageView_flag);
-            holder.countryNameView = (TextView) convertView.findViewById(R.id.textView_theme_description);
-            holder.populationView = (TextView) convertView.findViewById(R.id.textView_theme_number);
+            holder.ThemeLogoView = convertView.findViewById(R.id.imageView_theme_logo);
+            holder.ThemeNameView = convertView.findViewById(R.id.textView_theme_description);
+            holder.ThemeNumberView = convertView.findViewById(R.id.textView_theme_number);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Listview_element country = this.listData.get(position);
-        holder.countryNameView.setText(country.getThemeName());
-        holder.populationView.setText(country.getThemeNumber());
+        Listview_element element = this.listData.get(position);
+        holder.ThemeNameView.setText(element.getThemeName());
+        holder.ThemeNumberView.setText(element.getThemeNumber());
 
-        int imageId = this.getMipmapResIdByName(country.getThemelogoName());
+        int imageId = this.getDrawableResIdByName(element.getThemelogoName());
 
-        holder.flagView.setImageResource(imageId);
+        holder.ThemeLogoView.setImageResource(imageId);
 
         return convertView;
     }
 
     // Find Image ID corresponding to the name of the image (in the directory mipmap).
-    public int getMipmapResIdByName(String resName)  {
+    public int getDrawableResIdByName(String resName)  {
         String pkgName = context.getPackageName();
         // Return 0 if not found.
         int resID = context.getResources().getIdentifier(resName , "drawable", pkgName);
@@ -72,9 +72,9 @@ public class CustomListAdapter  extends BaseAdapter {
     }
 
     static class ViewHolder {
-        ImageView flagView;
-        TextView countryNameView;
-        TextView populationView;
+        ImageView ThemeLogoView;
+        TextView ThemeNameView;
+        TextView ThemeNumberView;
     }
 
 }

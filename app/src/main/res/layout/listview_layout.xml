@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView_flag"
+        android:id="@+id/imageView_theme_logo"
         android:layout_width="110sp"
         android:layout_height="90sp"
         android:layout_marginTop="26dp"
@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView_theme_number"
@@ -22,7 +23,7 @@
         android:layout_height="28dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Theme_number"
+        android:text="@string/theme_number"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -33,7 +34,7 @@
         android:layout_width="200dp"
         android:layout_height="90dp"
         android:gravity="center"
-        android:text="Theme_Description"
+        android:text="@string/theme_description"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
