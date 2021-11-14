@@ -36,6 +36,12 @@ public class Theme_Choice_Activity extends AppCompatActivity {
         listView.setOnItemClickListener((a, v, position, id) -> {
             Object o = listView.getItemAtPosition(position);
             Listview_element country = (Listview_element) o;
+            if (country.getThemeNumber().equals("Thème n°1:"))
+            {
+                Intent intent = new Intent(Theme_Choice_Activity.this, mainQuestionnaireActivity
+                        .class);
+                startActivity(intent);
+            }
             Toast.makeText(Theme_Choice_Activity.this, "Selected :" + " " + country, Toast.LENGTH_LONG).show();
         });
     }
