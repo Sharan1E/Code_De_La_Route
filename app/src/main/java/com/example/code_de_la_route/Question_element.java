@@ -1,0 +1,40 @@
+package com.example.code_de_la_route;
+
+public class Question_element {
+
+    private String questionnumber;
+    private String questiontitle;
+    private String answer1;
+    private String answer2;
+    private String answer3;
+    private String answer4;
+
+    public Question_element(String questionnumber,String questiontitle,String answer1,String answer2,String answer3,String answer4)
+    {
+        this.questionnumber = questionnumber;
+        this.questiontitle = questiontitle;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
+    }
+
+    public String getQuestionNumber(){return questionnumber;}
+    public void setQuestionNumber(String questionnumber){this.questionnumber = questionnumber;}
+
+    public String getQuestionTitle(){return questiontitle;}
+    public void setQuestionTitle(String questiontitle){this.questiontitle = questiontitle;}
+
+    public String getAnswer1(){return answer1;}
+    public void setAnswer1(String answer1){this.answer1 = answer1;}
+
+    public String getAnswer2(){return answer2;}
+    public void setAnswer2(String answer2){this.answer2 = answer2;}
+
+    public String getAnswer3(){return answer3;}
+    public void setAnswer3(String answer3){this.answer3 = answer3;}
+
+    public String getAnswer4(){return answer4;}
+    public void setAnswer(String answer4){this.answer1 = answer4;}
+
+}

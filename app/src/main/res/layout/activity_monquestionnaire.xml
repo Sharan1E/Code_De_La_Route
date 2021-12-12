@@ -1,52 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp">
 
+
     <TextView
         android:id="@+id/textTitle"
+        android:layout_width="287dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/QuestionNumber"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/textResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/GroupQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Question 1"
-        android:textSize="50sp" ></TextView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textResult"
+        app:layout_constraintVertical_bias="0.27">
+
+        <RadioButton
+            android:id="@+id/buttonRoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reponse1"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRoll2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textResult" />
+
+        <RadioButton
+            android:id="@+id/buttonRoll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reponse2"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRoll3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRoll" />
+
+        <RadioButton
+            android:id="@+id/buttonRoll3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reponse3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRoll2" />
+
+        <RadioButton
+            android:id="@+id/buttonRoll4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reponse4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRoll3" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textResult"
-        android:layout_width="323dp"
-        android:layout_height="210dp"
+        android:layout_width="326dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="260dp"
         android:gravity="center"
-        android:text="Quelle est la capitale de la France ?"
-        android:textSize="30sp" ></TextView>
+        android:text="@string/QuestionTitle"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <Button
-        android:id="@+id/buttonRoll"
-        android:layout_width="fill_parent"
+        android:id="@+id/buttonNext"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="20dp"
-        android:text="Marseille"
-        android:textSize="18sp" ></Button>
+        android:layout_marginBottom="4dp"
+        android:text="@string/NextButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/buttonRoll2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="20dp"
-        android:text="Paris"
-        android:textSize="18sp" ></Button>
 
-    <Button
-        android:id="@+id/buttonRoll3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="20dp"
-        android:text="Toulouse"
-        android:textSize="18sp" ></Button>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -15,6 +15,11 @@ import java.util.Objects;
 
 public class Theme_Choice_Activity extends AppCompatActivity {
 
+    private static String themechoisi;
+
+    public static String getThemeChoisi(){return themechoisi;}
+    public void setThemeChoisi(String themechoisi){this.themechoisi = themechoisi;}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +40,15 @@ public class Theme_Choice_Activity extends AppCompatActivity {
         // When the user clicks on the ListItem
         listView.setOnItemClickListener((a, v, position, id) -> {
             Object o = listView.getItemAtPosition(position);
-            Listview_element country = (Listview_element) o;
-            if (country.getThemeNumber().equals("Thème n°1:"))
+            Listview_element element = (Listview_element) o;
+            if (element.getThemeNumber().equals("Thème n°1:"))
             {
                 Intent intent = new Intent(Theme_Choice_Activity.this, mainQuestionnaireActivity
                         .class);
+                setThemeChoisi(element.getThemeNumber());
                 startActivity(intent);
             }
-            Toast.makeText(Theme_Choice_Activity.this, "Selected :" + " " + country, Toast.LENGTH_LONG).show();
+            Toast.makeText(Theme_Choice_Activity.this, "Selected :" + " " + element, Toast.LENGTH_LONG).show();
         });
     }
 

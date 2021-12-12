@@ -27,7 +27,7 @@ public class reponse1Activity extends AppCompatActivity {
 
         //On va afficher du texte en fonction de la ville choisie
         String resultat = "Mauvaise réponse !";
-        if(villeChoisie.toLowerCase().equals("paris")){
+        if(villeChoisie.equalsIgnoreCase("paris")|| villeChoisie.equalsIgnoreCase("mayenne")){
             resultat = "Bonne réponse !";
         }
 

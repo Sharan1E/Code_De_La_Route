@@ -22,5 +22,14 @@
     <string name="theme_number">Theme_number</string>
     <string name="todo">Theme_Logo</string>
 
+    <!-- mainQuestionaireActivity -->
+    <string name="reponse1">ReponseQuestion 1</string>
+    <string name="reponse2">ReponseQuestion 2</string>
+    <string name="reponse3">ReponseQuestion 3</string>
+    <string name="reponse4">ReponseQuestion 4</string>
+    <string name="QuestionTitle">Quelle est la capitale de la France ?</string>
+    <string name="QuestionNumber">Question 1</string>
+    <string name="NextButton">Next</string>
+
 
 </resources>
