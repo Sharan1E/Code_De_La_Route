@@ -1,36 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
 
     <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="287dp"
-        android:layout_height="67dp"
+        android:id="@+id/questionTitle2"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="@string/QuestionTitle"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/GroupQuestion2"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+        app:layout_constraintRight_toRightOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/GroupQuestion" />
+
+    <RadioGroup
+        android:id="@+id/GroupQuestion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+        app:layout_constraintTop_toBottomOf="@+id/questionTitle2"
+        tools:layout_editor_absoluteX="32dp">
+
+        <CheckBox
+            android:id="@+id/buttonRoll5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reponse1"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRoll2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textResult" />
+
+        <CheckBox
+            android:id="@+id/buttonRoll6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reponse2"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRoll3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRoll" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/questionNumber"
+        android:layout_width="272dp"
+        android:layout_height="27dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/QuestionNumber"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/textResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 
     <RadioGroup
         android:id="@+id/GroupQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textResult"
-        app:layout_constraintVertical_bias="0.27">
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/questionTitle2"
+        app:layout_constraintTop_toBottomOf="@+id/questionTitle1"
+        tools:layout_editor_absoluteX="27dp">
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/buttonRoll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +90,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textResult" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/buttonRoll2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,9 +101,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonRoll" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/buttonRoll3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/reponse3"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -63,9 +112,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonRoll2" />
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/buttonRoll4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/reponse4"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -73,31 +122,73 @@
             app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonRoll3" />
+
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textResult"
-        android:layout_width="326dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="260dp"
+        android:id="@+id/questionTitle1"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
         android:gravity="center"
         android:text="@string/QuestionTitle"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+        android:textStyle="bold"
+        android:textSize="18dp"
+        app:layout_constraintRight_toRightOf="@+id/guideline3"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/GroupQuestion"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:layout_editor_absoluteX="50dp" />
 
     <Button
         android:id="@+id/buttonNext"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:text="@string/NextButton"
+        app:backgroundTint="@color/light_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GroupQuestion2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/NextButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="346dp"
+        android:layout_height="178dp"
+        app:layout_constraintDimensionRatio="23:18"
+        app:layout_constraintEnd_toEndOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/questionTitle1"
+        app:layout_constraintTop_toBottomOf="@+id/questionNumber"
+        tools:layout_editor_absoluteX="32dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

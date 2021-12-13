@@ -27,9 +27,9 @@
     <string name="reponse2">ReponseQuestion 2</string>
     <string name="reponse3">ReponseQuestion 3</string>
     <string name="reponse4">ReponseQuestion 4</string>
-    <string name="QuestionTitle">Quelle est la capitale de la France ?</string>
-    <string name="QuestionNumber">Question 1</string>
-    <string name="NextButton">Next</string>
+    <string name="QuestionTitle">Bla bla bla?</string>
+    <string name="QuestionNumber">Numero question</string>
+    <string name="NextButton">Ok</string>
 
 
 </resources>
