@@ -2,6 +2,12 @@ package com.example.code_de_la_route;
 
 public class Question_element {
 
+    private  boolean answer_1;
+    private  boolean answer_2;
+    private  boolean answer_3;
+    private  boolean answer_4;
+    private  boolean answer_5;
+    private  boolean answer_6;
     private String questionnumber;
     private String questiontitle1;
     private String questiontitle2;
@@ -11,12 +17,6 @@ public class Question_element {
     private String answer4;
     private String answer5;
     private String answer6;
-    private  boolean answer_1;
-    private  boolean answer_2;
-    private  boolean answer_3;
-    private  boolean answer_4;
-    private  boolean answer_5;
-    private  boolean answer_6;
 
     public Question_element()
     {
@@ -28,18 +28,18 @@ public class Question_element {
         this.answer3 = null;
         this.answer4 = null;
 
-        this.answer_1 = false;
-        this.answer_2 = false;
-        this.answer_3 = false;
-        this.answer_4 = false;
+        answer_1 = false;
+        answer_2 = false;
+        answer_3 = false;
+        answer_4 = false;
 
         this.questiontitle2 = null;
 
         this.answer5 = null;
         this.answer6 = null;
 
-        this.answer_5 = false;
-        this.answer_6 = false;
+        answer_5 = false;
+        answer_6 = false;
     }
 
     public Question_element(String questionnumber, String questiontitle1, String answer1,
@@ -141,11 +141,11 @@ public class Question_element {
     public String getAnswer6(){return answer6;}
     public void setAnswer6(String answer6){this.answer6 = answer6;}
 
-    public boolean isAnswer1Correct(String Answer1){return answer_1;}
-    public boolean isAnswer2Correct(String Answer2){return answer_2;}
-    public boolean isAnswer3Correct(String Answer3){return answer_3;}
-    public boolean isAnswer4Correct(String Answer4){return answer_4;}
-    public boolean isAnswer5Correct(String Answer5){return answer_5;}
-    public boolean isAnswer6Correct(String Answer6){return answer_6;}
+    public boolean isAnswer1Correct(){return this.answer_1;}
+    public boolean isAnswer2Correct(){return this.answer_2;}
+    public boolean isAnswer3Correct(){return this.answer_3;}
+    public boolean isAnswer4Correct(){return this.answer_4;}
+    public boolean isAnswer5Correct(){return this.answer_5;}
+    public boolean isAnswer6Correct(){return this.answer_6;}
 
 }

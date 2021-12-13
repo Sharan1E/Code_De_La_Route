@@ -2,6 +2,7 @@ package com.example.code_de_la_route;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.os.Bundle;
 
 import android.content.Intent;
@@ -11,7 +12,8 @@ public class reponse1Activity extends AppCompatActivity {
 
     //VILLE est la clé qui sert à récuperer la variable passée par l'autre activité
     //il faut donc que le nom soit le meme que dans l'activite parente
-    final String VILLE = "ville";
+    final String numberofcorrectanswer = "nombredebonnereponse";
+    final String numberofanswer = "nombredereponse";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +25,22 @@ public class reponse1Activity extends AppCompatActivity {
         //On recupere la valeur de la ville qu'on a choisie
         //pour cela il faut passer par l'objet Intent qui a servi a lancer cette activité
         Intent intent = getIntent();
-        String villeChoisie = intent.getStringExtra(VILLE);
+        String numberofgoodanswer = intent.getStringExtra(numberofcorrectanswer);
+        String allanswer = intent.getStringExtra(numberofanswer);
 
         //On va afficher du texte en fonction de la ville choisie
-        String resultat = "Mauvaise réponse !";
-        if(villeChoisie.equalsIgnoreCase("paris")|| villeChoisie.equalsIgnoreCase("mayenne")){
-            resultat = "Bonne réponse !";
-        }
+
+
+        int numberofincorrectanswer = Integer.parseInt(allanswer) - Integer.parseInt(numberofgoodanswer);
 
         //On récupère la vue dans laquelle on va écrire la réponse
         //dans le fichier activity_resultat.xml elle a l'id textResultatQuestion
-        TextView vueResultat = (TextView) findViewById(R.id.textResultatQuestion);
+        TextView vueResultat = findViewById(R.id.textResultatQuestion);
+        String score = ""+numberofincorrectanswer+" fautes sur "+allanswer;
 
         //on écrit le résultat dans le textView de l'affichage de la réponse
         if(vueResultat != null){
-            vueResultat.setText(resultat);
+            vueResultat.setText(score);
         }
     }
 }

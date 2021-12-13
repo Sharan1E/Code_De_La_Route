@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,16 +14,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class mainQuestionnaireActivity extends AppCompatActivity {
 
+    int GoodAnswer = 0;
     //VILLE est une clé qui sert à transmettre la valeur selectionnée
-    final String VILLE = "ville";
+    final String numberofcorrectanswer = "nombredebonnereponse";
+    final String numberofanswer = "nombredereponse";
     String themechoisi = "theme";
     int questionactuelle = 0;
-    List<Question_element> quizz_theme1;
+    List<Question_element> quizz_theme;
 
     public void ShuffleAnswer(CheckBox[] checkBoxes)
     {
@@ -37,38 +41,36 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
 
     public void DisplayQuestion()
     {
-        themechoisi = Theme_Choice_Activity.getThemeChoisi();
 
-        final TextView questionTitle1 = (TextView) findViewById(R.id.questionTitle1);
-        final TextView questionTitle2 = (TextView) findViewById(R.id.questionTitle2);
-        final TextView questionNumber = (TextView) findViewById(R.id.questionNumber);
-        final RadioGroup GroupQuestion = (RadioGroup) findViewById(R.id.GroupQuestion);
+        final TextView questionTitle1 = findViewById(R.id.questionTitle1);
+        final TextView questionTitle2 = findViewById(R.id.questionTitle2);
+        final TextView questionNumber = findViewById(R.id.questionNumber);
+        final RadioGroup GroupQuestion = findViewById(R.id.GroupQuestion);
 
-        final CheckBox reponse1 = (CheckBox) findViewById(R.id.buttonRoll);
-        final CheckBox reponse2 = (CheckBox) findViewById(R.id.buttonRoll2);
-        final CheckBox reponse3 = (CheckBox) findViewById(R.id.buttonRoll3);
-        final CheckBox reponse4 = (CheckBox) findViewById(R.id.buttonRoll4);
-        final CheckBox reponse5 = (CheckBox) findViewById(R.id.buttonRoll5);
-        final CheckBox reponse6 = (CheckBox) findViewById(R.id.buttonRoll6);
-        //CheckBox[] checkBoxes = {reponse1,reponse2,reponse3,reponse4};
-        final Button next = (Button) findViewById(R.id.buttonNext);
+        final CheckBox reponse1 = findViewById(R.id.buttonRoll);
+        final CheckBox reponse2 = findViewById(R.id.buttonRoll2);
+        final CheckBox reponse3 = findViewById(R.id.buttonRoll3);
+        final CheckBox reponse4 = findViewById(R.id.buttonRoll4);
+        final CheckBox reponse5 = findViewById(R.id.buttonRoll5);
+        final CheckBox reponse6 = findViewById(R.id.buttonRoll6);
+        CheckBox[] checkBoxes = {reponse1,reponse2,reponse3,reponse4,reponse5,reponse6};
+        final Button next = findViewById(R.id.buttonNext);
 
-        if(themechoisi.equals("Thème n°1:"))
-        {
+
             GroupQuestion.clearCheck();
            // checkBoxes = new CheckBox[]{reponse1, reponse2,reponse3,reponse4};
 
-            questionTitle1.setText(quizz_theme1.get(questionactuelle).getQuestionTitle1());
-            questionNumber.setText(quizz_theme1.get(questionactuelle).getQuestionNumber());
-            reponse1.setText(quizz_theme1.get(questionactuelle).getAnswer1());
-            reponse2.setText(quizz_theme1.get(questionactuelle).getAnswer2());
+            questionTitle1.setText(quizz_theme.get(questionactuelle).getQuestionTitle1());
+            questionNumber.setText(quizz_theme.get(questionactuelle).getQuestionNumber());
+            reponse1.setText(quizz_theme.get(questionactuelle).getAnswer1());
+            reponse2.setText(quizz_theme.get(questionactuelle).getAnswer2());
 
 
-            if(quizz_theme1.get(questionactuelle).getAnswer3() != null)
+            if(quizz_theme.get(questionactuelle).getAnswer3() != null)
             {
                 reponse3.setVisibility(View.VISIBLE);
-                reponse3.setText(quizz_theme1.get(questionactuelle).getAnswer3());
-                    if(quizz_theme1.get(questionactuelle).getAnswer4() == null)
+                reponse3.setText(quizz_theme.get(questionactuelle).getAnswer3());
+                    if(quizz_theme.get(questionactuelle).getAnswer4() == null)
                          {
                             // checkBoxes = new CheckBox[]{reponse1, reponse2,reponse3};
                          }
@@ -79,10 +81,10 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
                 }
 
 
-            if(quizz_theme1.get(questionactuelle).getAnswer4() != null)
+            if(quizz_theme.get(questionactuelle).getAnswer4() != null)
             {
                 reponse4.setVisibility(View.VISIBLE);
-                 reponse4.setText(quizz_theme1.get(questionactuelle).getAnswer4());
+                 reponse4.setText(quizz_theme.get(questionactuelle).getAnswer4());
             }
             else {
                 reponse4.setVisibility(View.GONE);
@@ -90,85 +92,88 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
                 }
 
 
-            if(quizz_theme1.get(questionactuelle).getQuestionTitle2() != null)
+            if(quizz_theme.get(questionactuelle).getQuestionTitle2() != null)
             {questionTitle2.setVisibility(View.VISIBLE);
-            questionTitle2.setText(quizz_theme1.get(questionactuelle).getQuestionTitle2());}
+            questionTitle2.setText(quizz_theme.get(questionactuelle).getQuestionTitle2());}
             else{questionTitle2.setVisibility(View.INVISIBLE);}
 
-            if(quizz_theme1.get(questionactuelle).getAnswer5() != null)
+            if(quizz_theme.get(questionactuelle).getAnswer5() != null)
             { reponse5.setVisibility(View.VISIBLE);
-            reponse5.setText(quizz_theme1.get(questionactuelle).getAnswer5());}
+            reponse5.setText(quizz_theme.get(questionactuelle).getAnswer5());}
             else{reponse5.setVisibility(View.GONE);}
 
-            if(quizz_theme1.get(questionactuelle).getAnswer6() != null)
+            if(quizz_theme.get(questionactuelle).getAnswer6() != null)
             {reponse6.setVisibility(View.VISIBLE);
-            reponse6.setText(quizz_theme1.get(questionactuelle).getAnswer6());}
+            reponse6.setText(quizz_theme.get(questionactuelle).getAnswer6());}
             else{reponse6.setVisibility(View.GONE);}
 
            // ShuffleAnswer(checkBoxes);
-        }
 
-        //on définit ce qu'il va se passer quand l'action clickSurBouton1 est déclenchée
-        View.OnClickListener clickSurReponse1  = v -> {
-            //quand on clique sur le bouton 1 on passe a l'activite resultat (reponse1Activity)
-            // en passant comme parametre le texte du bouton 1
+        final boolean[] uservalue1 = {false};
+        final boolean[] uservalue2 = {false};
+        final boolean[] uservalue3 = {false};
+        final boolean[] uservalue4 = {false};
+        final boolean[] uservalue5 = {false};
+        final boolean[] uservalue6 = {false};
 
-            Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
-            intent.putExtra(VILLE, reponse1.getText().toString());
-            startActivity(intent);
-        };
+        boolean answervalue1 = quizz_theme.get(questionactuelle).isAnswer1Correct();
+        boolean answervalue2 = quizz_theme.get(questionactuelle).isAnswer2Correct();
+        boolean answervalue3 = quizz_theme.get(questionactuelle).isAnswer3Correct();
+        boolean answervalue4 = quizz_theme.get(questionactuelle).isAnswer4Correct();
+        boolean answervalue5 = quizz_theme.get(questionactuelle).isAnswer5Correct();
+        boolean answervalue6 = quizz_theme.get(questionactuelle).isAnswer6Correct();
 
-        //on définit ce qu'il va se passer quand l'action clickSurBouton2 est déclenchée
-        View.OnClickListener clickSurReponse2  = v -> {
-            Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
-            intent.putExtra(VILLE, reponse2.getText().toString());
-            startActivity(intent);
-        };
+        boolean[] answervalues = {answervalue1,answervalue2,answervalue3,answervalue4,answervalue5,answervalue6};
 
-        //on définit ce qu'il va se passer quand l'action clickSurBouton3 est déclenchée
-        View.OnClickListener clickSurReponse3  = v -> {
-            Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
-            intent.putExtra(VILLE, reponse3.getText().toString());
-            startActivity(intent);
-        };
 
-        //on définit ce qu'il va se passer quand l'action clickSurBouton3 est déclenchée
-        View.OnClickListener clickSurReponse4  = v -> {
-            Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
-            intent.putExtra(VILLE, reponse3.getText().toString());
-            startActivity(intent);
-        };
-
-        //on définit ce qu'il va se passer quand l'action clickSurBouton3 est déclenchée
-        View.OnClickListener clickSurReponse5  = v -> {
-            Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
-            intent.putExtra(VILLE, reponse3.getText().toString());
-            startActivity(intent);
-        };
-
-        //on définit ce qu'il va se passer quand l'action clickSurBouton3 est déclenchée
-        View.OnClickListener clickSurReponse6  = v -> {
-            Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
-            intent.putExtra(VILLE, reponse3.getText().toString());
-            startActivity(intent);
-        };
-
-        //on définit ce qu'il va se passer quand l'action clickSurBouton3 est déclenchée
-        //CheckBox[] finalCheckBoxes = checkBoxes;
         View.OnClickListener clickSurNext  = v -> {
 
-           // ShuffleAnswer(finalCheckBoxes);
-            questionactuelle++;
-            DisplayQuestion();
-        };
+            uservalue1[0] = reponse1.isChecked();
+            uservalue2[0] = reponse2.isChecked();
+            uservalue3[0] = reponse3.isChecked();
+            uservalue4[0] = reponse4.isChecked();
+            uservalue5[0] = reponse5.isChecked();
+            uservalue6[0] = reponse6.isChecked();
 
-        //associe au bouton reponse l'action clickSurBouton1
-        reponse1.setOnClickListener(clickSurReponse1);
-        reponse2.setOnClickListener(clickSurReponse2);
-        reponse3.setOnClickListener(clickSurReponse3);
-        reponse4.setOnClickListener(clickSurReponse4);
-        reponse5.setOnClickListener(clickSurReponse5);
-        reponse6.setOnClickListener(clickSurReponse6);
+            boolean[] uservalues = {uservalue1[0], uservalue2[0], uservalue3[0], uservalue4[0],
+                    uservalue5[0], uservalue6[0]};
+
+            Log.d("oooooooooo", Arrays.toString(answervalues));
+            Log.d("oooooooooo", Arrays.toString(uservalues));
+
+            if(Arrays.equals(uservalues, answervalues))
+            {
+                GoodAnswer++;
+                Log.d("oooooooooo",String.valueOf(GoodAnswer));
+
+            }
+
+            questionactuelle++;
+
+            if (questionactuelle<quizz_theme.size())
+            {
+
+                DisplayQuestion();
+                for (CheckBox checkBox : checkBoxes) {
+                    if (checkBox.isChecked()) {
+                        checkBox.setChecked(false);
+                        checkBox.setSelected(false);
+                    }
+                }
+                Log.d("OKKKKKKKKKKKKKKKK","IFFFFFFFFFFFFF");
+            }
+            else
+                {
+                    Log.d("OKKKKKKKKKKKKKKKK","ELSEEEEEEEEEE");
+                    Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
+                    intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
+                    intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
+                    Log.d("okokokoko",String.valueOf(GoodAnswer));
+                    Log.d("fdfdfdfdf",String.valueOf(quizz_theme.size()));
+                    startActivity(intent);
+                }
+
+        };
 
         next.setOnClickListener(clickSurNext);
     }
@@ -179,17 +184,22 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monquestionnaire);
 
-        quizz_theme1 = new ArrayList<>();
 
+        quizz_theme = new ArrayList<>();
+        themechoisi = Theme_Choice_Activity.getThemeChoisi();
+
+        if(themechoisi.equals("Thème n°1:"))
+        {
         Question_element question1_theme1 = new Question_element("Question 1", "Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
         Question_element question2_theme1 = new Question_element("Question 2","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
         Question_element question3_theme1 = new Question_element("Question 3","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
         Question_element question4_theme1=  new Question_element("Question 4","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
 
-        quizz_theme1.add(question1_theme1);
-        quizz_theme1.add(question2_theme1);
-        quizz_theme1.add(question3_theme1);
-        quizz_theme1.add(question4_theme1);
+        quizz_theme.add(question1_theme1);
+        quizz_theme.add(question2_theme1);
+        quizz_theme.add(question3_theme1);
+        quizz_theme.add(question4_theme1);
+        }
 
         DisplayQuestion();
 
