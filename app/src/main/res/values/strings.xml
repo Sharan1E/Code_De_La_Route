@@ -30,6 +30,7 @@
     <string name="QuestionTitle">Bla?</string>
     <string name="QuestionNumber">Numero question</string>
     <string name="NextButton">OK</string>
-    <string name="score">Score</string>*
+    <string name="score">Score</string>
+    <string name="imageduquizz">imageduquizz</string>*
 
 </resources>

@@ -3,14 +3,21 @@ package com.example.code_de_la_route;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -63,10 +70,10 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
 
        // if(themechoisi.equals("Thème n°1:"))
         //{
-            Question_element question1_theme1 = new Question_element("Question 1", "Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
-            Question_element question2_theme1 = new Question_element("Question 2","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
-            Question_element question3_theme1 = new Question_element("Question 3","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
-            Question_element question4_theme1=  new Question_element("Question 4","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
+            Question_element question1_theme1 = new Question_element("Question 1", "question1_theme1","Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
+            Question_element question2_theme1 = new Question_element("Question 2","question2_theme1","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
+            Question_element question3_theme1 = new Question_element("Question 3","question3_theme1","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
+            Question_element question4_theme1=  new Question_element("Question 4","question4_theme1","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
 
             quizz_theme.add(question1_theme1);
             quizz_theme.add(question2_theme1);
@@ -97,6 +104,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         final TextView questionTitle2 = findViewById(R.id.questionTitle2);
         final TextView questionNumber = findViewById(R.id.questionNumber);
         final RadioGroup GroupQuestion = findViewById(R.id.GroupQuestion);
+        final ImageView questionImage = findViewById(R.id.imageQuizz);
 
         final CheckBox reponse1 = findViewById(R.id.buttonRoll);
         final CheckBox reponse2 = findViewById(R.id.buttonRoll2);
@@ -107,8 +115,10 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         CheckBox[] checkBoxes = {reponse1,reponse2,reponse3,reponse4,reponse5,reponse6};
         final Button next = findViewById(R.id.buttonNext);
 
+        if(getpreviousActivity.equals("Examen Blanc")){next.setVisibility(View.GONE);}
 
-            GroupQuestion.clearCheck();
+            int imageId = getResources().getIdentifier(quizz_theme.get(questionactuelle).getQuestionImage(), "drawable", getPackageName());
+            questionImage.setImageResource(imageId);
 
             questionTitle1.setText(quizz_theme.get(questionactuelle).getQuestionTitle1());
             questionNumber.setText(quizz_theme.get(questionactuelle).getQuestionNumber());
@@ -160,9 +170,12 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
 
         boolean[] answervalues = {answervalue1,answervalue2,answervalue3,answervalue4,answervalue5,answervalue6};
 
+        ProgressBar mProgressBar;
+
+
+
 
         View.OnClickListener clickSurNext  = v -> {
-
             uservalue1[0] = reponse1.isChecked();
             uservalue2[0] = reponse2.isChecked();
             uservalue3[0] = reponse3.isChecked();
@@ -177,7 +190,6 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             {
                 GoodAnswer++;
             }
-
             questionactuelle++;
 
             if (questionactuelle<quizz_theme.size())
@@ -202,6 +214,65 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         };
 
         next.setOnClickListener(clickSurNext);
+
+        mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
+
+        if (getpreviousActivity.equals("Entrainement")){mProgressBar.setVisibility(View.GONE);}
+        else{
+            ObjectAnimator animation = ObjectAnimator.ofInt(mProgressBar, "progress", 0, 100);
+            animation.setDuration(30000);
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) { }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+
+                    uservalue1[0] = reponse1.isChecked();
+                    uservalue2[0] = reponse2.isChecked();
+                    uservalue3[0] = reponse3.isChecked();
+                    uservalue4[0] = reponse4.isChecked();
+                    uservalue5[0] = reponse5.isChecked();
+                    uservalue6[0] = reponse6.isChecked();
+
+                    boolean[] uservalues = {uservalue1[0], uservalue2[0], uservalue3[0], uservalue4[0],
+                            uservalue5[0], uservalue6[0]};
+
+                    if(Arrays.equals(uservalues, answervalues))
+                    {
+                        GoodAnswer++;
+                    }
+                    questionactuelle++;
+                    if (questionactuelle<quizz_theme.size())
+                    {
+
+                        DisplayQuestion();
+                        for (CheckBox checkBox : checkBoxes) {
+                            if (checkBox.isChecked()) {
+                                checkBox.setChecked(false);
+                                checkBox.setSelected(false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
+                        intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
+                        intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) { }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) { }
+            });
+            animation.start();}
+
+
     }
 
     @Override

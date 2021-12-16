@@ -8,6 +8,7 @@ public class Question_element {
     private  boolean answer_4;
     private  boolean answer_5;
     private  boolean answer_6;
+    private String questionimage;
     private String questionnumber;
     private String questiontitle1;
     private String questiontitle2;
@@ -22,6 +23,7 @@ public class Question_element {
     {
         this.questionnumber = null;
         this.questiontitle1 = null;
+        this.questionimage =null;
 
         this.answer1 = null;
         this.answer2 = null;
@@ -42,13 +44,14 @@ public class Question_element {
         answer_6 = false;
     }
 
-    public Question_element(String questionnumber, String questiontitle1, String answer1,
+    public Question_element(String questionnumber,String questionimage, String questiontitle1, String answer1,
                             boolean answer_1, String answer2, boolean answer_2,
                             String answer3, boolean answer_3, String answer4, boolean answer_4)
     {
         this();
         this.questionnumber = questionnumber;
         this.questiontitle1 = questiontitle1;
+        this.questionimage = questionimage;
 
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -62,7 +65,7 @@ public class Question_element {
 
     }
 
-    public Question_element(String questionnumber,String questiontitle1,String answer1,
+    public Question_element(String questionnumber,String questionimage,String questiontitle1,String answer1,
                             boolean answer_1,String answer2,boolean answer_2,String questiontitle2,
                             String answer5,boolean answer_5, String answer6,boolean answer_6) {
 
@@ -70,6 +73,7 @@ public class Question_element {
         this.questionnumber = questionnumber;
         this.questiontitle1 = questiontitle1;
         this.questiontitle2 = questiontitle2;
+        this.questionimage = questionimage;
 
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -84,13 +88,14 @@ public class Question_element {
         this.answer_6 = answer_6;
     }
 
-    public Question_element(String questionnumber, String questiontitle1, String answer1,
+    public Question_element(String questionnumber,String questionimage, String questiontitle1, String answer1,
                             boolean answer_1, String answer2, boolean answer_2,
                             String answer3, boolean answer_3)
     {
         this();
         this.questionnumber = questionnumber;
         this.questiontitle1 = questiontitle1;
+        this.questionimage = questionimage;
 
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -101,12 +106,13 @@ public class Question_element {
         this.answer_3 = answer_3;
     }
 
-    public Question_element(String questionnumber, String questiontitle1, String answer1,
+    public Question_element(String questionnumber,String questionimage, String questiontitle1, String answer1,
                             boolean answer_1, String answer2, boolean answer_2)
     {
         this();
         this.questionnumber = questionnumber;
         this.questiontitle1 = questiontitle1;
+        this.questionimage = questionimage;
 
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -123,6 +129,9 @@ public class Question_element {
 
     public String getQuestionTitle2(){return questiontitle2;}
     public void setQuestionTitle2(String questiontitle2){this.questiontitle2 = questiontitle2;}
+
+    public String getQuestionImage(){return questionimage;}
+    public void setQuestionimage(String questionimage){this.questionimage = questionimage;}
 
     public String getAnswer1(){return answer1;}
     public void setAnswer1(String answer1){this.answer1 = answer1;}
