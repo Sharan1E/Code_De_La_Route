@@ -45,7 +45,7 @@ public class Theme_Choice_Activity extends AppCompatActivity {
             {
                 Intent intent = new Intent(Theme_Choice_Activity.this, mainQuestionnaireActivity
                         .class);
-                intent.putExtra("FROM_ACTIVITY","Entrainement");
+                MainActivity.choixmode =1;
                 setThemeChoisi(element.getThemeNumber());
                 startActivity(intent);
             }

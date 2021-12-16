@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    static int choixmode;
+
+    public static int getChoixmode() {
+        return choixmode;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void openExamActivity(){
         Intent intent = new Intent(MainActivity.this,mainQuestionnaireActivity.class);
-        intent.putExtra("FROM_ACTIVITY","Examen Blanc");
+        choixmode=0;
         startActivity(intent);
     }
 
     public void openThemeChoiceActivity(){
         Intent intent = new Intent(MainActivity.this,Theme_Choice_Activity.class);
+        choixmode=1;
         startActivity(intent);
     }
+
 }

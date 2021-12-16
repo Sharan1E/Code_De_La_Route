@@ -10,7 +10,8 @@
         android:theme="@style/Theme.Code_De_La_Route">
         <activity
             android:name=".reponse1Activity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Code_De_La_Route.NoActionBar"/>
         <activity
             android:name=".mainQuestionnaireActivity"
             android:exported="true" />

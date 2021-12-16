@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textResultatQuestion"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Reponse 1"
-        android:textSize="30dp"></TextView>
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="@string/reponse_1"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/description_score"
+        app:layout_constraintTop_toBottomOf="@+id/imageScore"
+        tools:layout_editor_absoluteX="25dp" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/imageScore"
+        android:layout_width="342dp"
+        android:layout_height="346dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintEnd_toEndOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/textResultatQuestion"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="34dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/imageduquizz" />
+
+    <Button
+        android:id="@+id/finishbutton"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:background="@drawable/rounded_corners"
+        android:fontFamily="@font/baloo"
+        android:text="@string/finish"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#FFF"
+        android:textSize="26sp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline2"
+        app:backgroundTint="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_score"
+        tools:layout_editor_absoluteX="41dp" />
+
+    <TextView
+        android:id="@+id/description_score"
+        android:layout_width="352dp"
+        android:layout_height="74dp"
+        android:gravity="center"
+        android:text="@string/description_score"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/finishbutton"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline1"
+        app:layout_constraintRight_toRightOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textResultatQuestion" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

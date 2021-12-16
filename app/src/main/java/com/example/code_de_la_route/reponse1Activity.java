@@ -1,17 +1,15 @@
 package com.example.code_de_la_route;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.Objects;
 
 public class reponse1Activity extends AppCompatActivity {
 
@@ -22,47 +20,97 @@ public class reponse1Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources(). getColor(R.color.orange)));
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar_theme_choice_activity_score);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //On charge l'activité des resultats
         setContentView(R.layout.activity_resultats);
 
-        //On recupere la valeur de la ville qu'on a choisie
-        //pour cela il faut passer par l'objet Intent qui a servi a lancer cette activité
+        Button finishbutton = findViewById(R.id.finishbutton);
+        final ImageView questionImage = findViewById(R.id.imageScore);
+        int imageWinId = getResources().getIdentifier("winning_case", "drawable", getPackageName());
+        int imageLoseId = getResources().getIdentifier("losing_case", "drawable", getPackageName());
+
         Intent intent = getIntent();
+        String previousActivity= intent.getStringExtra("FROM_ACTIVITY");
+
+
         String numberofgoodanswer = intent.getStringExtra(numberofcorrectanswer);
         String allanswer = intent.getStringExtra(numberofanswer);
-
-        //On va afficher du texte en fonction de la ville choisie
+        String sansfaute ="Impressionnant, c’est un sans-faute !";
+        String codemaitrise = "Bravo, vous maîtrisez votre code de la route !";
+        String maitirisetheme = "Bravo, vous maîtrisez ce thème!";
+        String presque = "Vous s'y êtes presque !";
+        String entrainement = "Entraînez-vous pour faire 5 fautes ou moins.";
+        String entrainement2 = "Entraînez-vous pour faire 3 fautes ou moins.";
 
 
         int numberofincorrectanswer = Integer.parseInt(allanswer) - Integer.parseInt(numberofgoodanswer);
 
-        //On récupère la vue dans laquelle on va écrire la réponse
-        //dans le fichier activity_resultat.xml elle a l'id textResultatQuestion
         TextView vueResultat = findViewById(R.id.textResultatQuestion);
+        TextView descriptionResultat = findViewById(R.id.description_score);
+
+
+        if(MainActivity.choixmode==0)
+
+        {
+            if(numberofincorrectanswer==0 )
+            {
+                questionImage.setImageResource(imageWinId);
+                descriptionResultat.setText(sansfaute);
+            }
+            else if(numberofincorrectanswer<=5)
+            {
+                questionImage.setImageResource(imageWinId);
+                descriptionResultat.setText(codemaitrise);
+            }
+            else if(numberofincorrectanswer>6 && numberofincorrectanswer<10)
+            {
+                questionImage.setImageResource(imageLoseId);
+                descriptionResultat.setText(presque);
+            }
+            else
+            {
+                questionImage.setImageResource(imageLoseId);
+                descriptionResultat.setText(entrainement);
+            }
+        }
+
+        else if(MainActivity.choixmode==1)
+        {
+            if(numberofincorrectanswer==0)
+            {
+                questionImage.setImageResource(imageWinId);
+                descriptionResultat.setText(sansfaute);
+            }
+            else if (numberofincorrectanswer<=3)
+            {
+                questionImage.setImageResource(imageWinId);
+                descriptionResultat.setText(maitirisetheme);
+            }
+            else
+                {
+                questionImage.setImageResource(imageLoseId);
+                descriptionResultat.setText(entrainement2);
+                }
+        }
+
+
         String score = ""+numberofincorrectanswer+" fautes sur "+allanswer;
 
         //on écrit le résultat dans le textView de l'affichage de la réponse
         if(vueResultat != null){
             vueResultat.setText(score);
         }
+
+        View.OnClickListener clickSurFinish  = v ->
+        {
+            Intent mintent = new Intent(reponse1Activity.this, MainActivity.class);
+            startActivity(mintent);
+        };
+
+        finishbutton.setOnClickListener(clickSurFinish);
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == android.R.id.home) {
 
-            Intent intent = new Intent(reponse1Activity.this, Theme_Choice_Activity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }

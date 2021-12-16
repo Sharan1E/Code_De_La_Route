@@ -9,7 +9,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,21 +42,21 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        String previousActivity= intent.getStringExtra("FROM_ACTIVITY");
-        getpreviousActivity = previousActivity;
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources(). getColor(R.color.orange)));
 
-        if (previousActivity.equals("Entrainement"))
+        if (MainActivity.choixmode==1)
         {
             getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
             getSupportActionBar().setCustomView(R.layout.actionbar_theme_choice_activity_quizz);
+            MainActivity.choixmode=1;
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        else if (previousActivity.equals("Examen Blanc"))
+        else if (MainActivity.choixmode==0)
         {
             getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
             getSupportActionBar().setCustomView(R.layout.actionbar_theme_choice_activity_exam);
+            MainActivity.choixmode=0;
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -81,20 +79,8 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             quizz_theme.add(question4_theme1);
 
         //}
-
         DisplayQuestion();
 
-    }
-
-    public void ShuffleAnswer(CheckBox[] checkBoxes)
-    {
-        for (int i = 0; i < checkBoxes.length; i++) {//this loop is randomly changing values 4 times
-            int swap_ind1 = ((int) (Math.random() * 10) % checkBoxes.length);
-            int swap_ind2 = ((int) (Math.random() * 10) % checkBoxes.length);
-            String temp = (String) checkBoxes[swap_ind1].getText();
-            checkBoxes[swap_ind1].setText(checkBoxes[swap_ind2].getText());
-            checkBoxes[swap_ind2].setText(temp);
-        }
     }
 
     public void DisplayQuestion()
@@ -103,7 +89,6 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         final TextView questionTitle1 = findViewById(R.id.questionTitle1);
         final TextView questionTitle2 = findViewById(R.id.questionTitle2);
         final TextView questionNumber = findViewById(R.id.questionNumber);
-        final RadioGroup GroupQuestion = findViewById(R.id.GroupQuestion);
         final ImageView questionImage = findViewById(R.id.imageQuizz);
 
         final CheckBox reponse1 = findViewById(R.id.buttonRoll);
@@ -115,7 +100,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
         CheckBox[] checkBoxes = {reponse1,reponse2,reponse3,reponse4,reponse5,reponse6};
         final Button next = findViewById(R.id.buttonNext);
 
-        if(getpreviousActivity.equals("Examen Blanc")){next.setVisibility(View.GONE);}
+        if(MainActivity.choixmode==0){next.setVisibility(View.GONE);}
 
             int imageId = getResources().getIdentifier(quizz_theme.get(questionactuelle).getQuestionImage(), "drawable", getPackageName());
             questionImage.setImageResource(imageId);
@@ -189,6 +174,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             if(Arrays.equals(uservalues, answervalues))
             {
                 GoodAnswer++;
+                Log.d("goooooood","plus1111111111111111111");
             }
             questionactuelle++;
 
@@ -196,6 +182,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             {
 
                 DisplayQuestion();
+                Log.d("IFIFIFIFIFIFIFIFI","okokokokokokokokok");
                 for (CheckBox checkBox : checkBoxes) {
                     if (checkBox.isChecked()) {
                         checkBox.setChecked(false);
@@ -205,6 +192,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             }
             else
                 {
+                    Log.d("ELSEELSELESLELELELE","okokokokokokokokok");
                     Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
                     intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
                     intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
@@ -217,14 +205,14 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
 
         mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
 
-        if (getpreviousActivity.equals("Entrainement")){mProgressBar.setVisibility(View.GONE);}
+        if (MainActivity.choixmode==1){mProgressBar.setVisibility(View.GONE);}
         else{
             ObjectAnimator animation = ObjectAnimator.ofInt(mProgressBar, "progress", 0, 100);
             animation.setDuration(30000);
             animation.setInterpolator(new DecelerateInterpolator());
             animation.addListener(new Animator.AnimatorListener() {
                 @Override
-                public void onAnimationStart(Animator animator) { }
+                public void onAnimationStart(Animator animator) {}
 
                 @Override
                 public void onAnimationEnd(Animator animator) {
@@ -257,6 +245,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
                     }
                     else
                     {
+
                         Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
                         intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
                         intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
@@ -265,10 +254,10 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onAnimationCancel(Animator animator) { }
+                public void onAnimationCancel(Animator animator) {}
 
                 @Override
-                public void onAnimationRepeat(Animator animator) { }
+                public void onAnimationRepeat(Animator animator) {}
             });
             animation.start();}
 

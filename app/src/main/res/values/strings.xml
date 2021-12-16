@@ -31,6 +31,11 @@
     <string name="QuestionNumber">Numero question</string>
     <string name="NextButton">OK</string>
     <string name="score">Score</string>
-    <string name="imageduquizz">imageduquizz</string>*
+
+    <!-- reponse1Activity -->
+    <string name="imageduquizz">imageduquizz</string>
+    <string name="reponse_1">Reponse 1</string>
+    <string name="description_score">description_score</string>
+    <string name="finish">Vroooom !!</string>
 
 </resources>
