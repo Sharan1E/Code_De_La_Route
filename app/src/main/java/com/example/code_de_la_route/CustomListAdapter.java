@@ -1,7 +1,7 @@
 package com.example.code_de_la_route;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +38,7 @@ public class CustomListAdapter  extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("InflateParams")
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
@@ -65,10 +66,7 @@ public class CustomListAdapter  extends BaseAdapter {
     // Find Image ID corresponding to the name of the image (in the directory mipmap).
     public int getDrawableResIdByName(String resName)  {
         String pkgName = context.getPackageName();
-        // Return 0 if not found.
-        int resID = context.getResources().getIdentifier(resName , "drawable", pkgName);
-        Log.i("CustomListView", "Res Name: "+ resName+"==> Res ID = "+ resID);
-        return resID;
+        return context.getResources().getIdentifier(resName , "drawable", pkgName);
     }
 
     static class ViewHolder {

@@ -1,12 +1,17 @@
 package com.example.code_de_la_route;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 public class reponse1Activity extends AppCompatActivity {
 
@@ -18,6 +23,11 @@ public class reponse1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources(). getColor(R.color.orange)));
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_theme_choice_activity_score);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //On charge l'activité des resultats
         setContentView(R.layout.activity_resultats);
@@ -42,5 +52,17 @@ public class reponse1Activity extends AppCompatActivity {
         if(vueResultat != null){
             vueResultat.setText(score);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == android.R.id.home) {
+
+            Intent intent = new Intent(reponse1Activity.this, Theme_Choice_Activity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

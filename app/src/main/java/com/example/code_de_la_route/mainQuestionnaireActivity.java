@@ -1,11 +1,12 @@
 package com.example.code_de_la_route;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 public class mainQuestionnaireActivity extends AppCompatActivity {
@@ -25,8 +27,57 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
     final String numberofcorrectanswer = "nombredebonnereponse";
     final String numberofanswer = "nombredereponse";
     String themechoisi = "theme";
+    String getpreviousActivity = "ancienne activite";
     int questionactuelle = 0;
     List<Question_element> quizz_theme;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        String previousActivity= intent.getStringExtra("FROM_ACTIVITY");
+        getpreviousActivity = previousActivity;
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources(). getColor(R.color.orange)));
+
+        if (previousActivity.equals("Entrainement"))
+        {
+            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            getSupportActionBar().setCustomView(R.layout.actionbar_theme_choice_activity_quizz);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        else if (previousActivity.equals("Examen Blanc"))
+        {
+            getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            getSupportActionBar().setCustomView(R.layout.actionbar_theme_choice_activity_exam);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        setContentView(R.layout.activity_monquestionnaire);
+
+
+        quizz_theme = new ArrayList<>();
+        themechoisi = Theme_Choice_Activity.getThemeChoisi();
+
+       // if(themechoisi.equals("Thème n°1:"))
+        //{
+            Question_element question1_theme1 = new Question_element("Question 1", "Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
+            Question_element question2_theme1 = new Question_element("Question 2","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
+            Question_element question3_theme1 = new Question_element("Question 3","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
+            Question_element question4_theme1=  new Question_element("Question 4","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
+
+            quizz_theme.add(question1_theme1);
+            quizz_theme.add(question2_theme1);
+            quizz_theme.add(question3_theme1);
+            quizz_theme.add(question4_theme1);
+
+        //}
+
+        DisplayQuestion();
+
+    }
 
     public void ShuffleAnswer(CheckBox[] checkBoxes)
     {
@@ -58,7 +109,6 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
 
 
             GroupQuestion.clearCheck();
-           // checkBoxes = new CheckBox[]{reponse1, reponse2,reponse3,reponse4};
 
             questionTitle1.setText(quizz_theme.get(questionactuelle).getQuestionTitle1());
             questionNumber.setText(quizz_theme.get(questionactuelle).getQuestionNumber());
@@ -67,29 +117,15 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
 
 
             if(quizz_theme.get(questionactuelle).getAnswer3() != null)
-            {
-                reponse3.setVisibility(View.VISIBLE);
+            {reponse3.setVisibility(View.VISIBLE);
                 reponse3.setText(quizz_theme.get(questionactuelle).getAnswer3());
-                    if(quizz_theme.get(questionactuelle).getAnswer4() == null)
-                         {
-                            // checkBoxes = new CheckBox[]{reponse1, reponse2,reponse3};
-                         }
-            }
-            else{
-                reponse3.setVisibility(View.GONE);
-               // checkBoxes = new CheckBox[]{reponse1, reponse2,reponse5,reponse6};
-                }
+            } else{ reponse3.setVisibility(View.GONE); }
 
 
             if(quizz_theme.get(questionactuelle).getAnswer4() != null)
-            {
-                reponse4.setVisibility(View.VISIBLE);
-                 reponse4.setText(quizz_theme.get(questionactuelle).getAnswer4());
-            }
-            else {
-                reponse4.setVisibility(View.GONE);
-               // checkBoxes = new CheckBox[]{reponse1, reponse2,reponse5,reponse6};
-                }
+            { reponse4.setVisibility(View.VISIBLE);
+                 reponse4.setText(quizz_theme.get(questionactuelle).getAnswer4()); }
+            else { reponse4.setVisibility(View.GONE);}
 
 
             if(quizz_theme.get(questionactuelle).getQuestionTitle2() != null)
@@ -107,7 +143,6 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             reponse6.setText(quizz_theme.get(questionactuelle).getAnswer6());}
             else{reponse6.setVisibility(View.GONE);}
 
-           // ShuffleAnswer(checkBoxes);
 
         final boolean[] uservalue1 = {false};
         final boolean[] uservalue2 = {false};
@@ -138,14 +173,9 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             boolean[] uservalues = {uservalue1[0], uservalue2[0], uservalue3[0], uservalue4[0],
                     uservalue5[0], uservalue6[0]};
 
-            Log.d("oooooooooo", Arrays.toString(answervalues));
-            Log.d("oooooooooo", Arrays.toString(uservalues));
-
             if(Arrays.equals(uservalues, answervalues))
             {
                 GoodAnswer++;
-                Log.d("oooooooooo",String.valueOf(GoodAnswer));
-
             }
 
             questionactuelle++;
@@ -160,16 +190,12 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
                         checkBox.setSelected(false);
                     }
                 }
-                Log.d("OKKKKKKKKKKKKKKKK","IFFFFFFFFFFFFF");
             }
             else
                 {
-                    Log.d("OKKKKKKKKKKKKKKKK","ELSEEEEEEEEEE");
                     Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
                     intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
                     intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
-                    Log.d("okokokoko",String.valueOf(GoodAnswer));
-                    Log.d("fdfdfdfdf",String.valueOf(quizz_theme.size()));
                     startActivity(intent);
                 }
 
@@ -179,36 +205,16 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monquestionnaire);
-
-
-        quizz_theme = new ArrayList<>();
-        themechoisi = Theme_Choice_Activity.getThemeChoisi();
-
-        if(themechoisi.equals("Thème n°1:"))
-        {
-        Question_element question1_theme1 = new Question_element("Question 1", "Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
-        Question_element question2_theme1 = new Question_element("Question 2","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
-        Question_element question3_theme1 = new Question_element("Question 3","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
-        Question_element question4_theme1=  new Question_element("Question 4","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
-
-        quizz_theme.add(question1_theme1);
-        quizz_theme.add(question2_theme1);
-        quizz_theme.add(question3_theme1);
-        quizz_theme.add(question4_theme1);
-        }
-
-        DisplayQuestion();
-
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(mainQuestionnaireActivity.this, MainActivity.class);
+            Intent intent = new Intent();
+            if (getpreviousActivity.equals("Examen Blanc"))
+            {
+                 intent = new Intent(mainQuestionnaireActivity.this, MainActivity.class);
+            }
+            else
+                { intent = new Intent(mainQuestionnaireActivity.this, Theme_Choice_Activity.class);
+            }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             return true;

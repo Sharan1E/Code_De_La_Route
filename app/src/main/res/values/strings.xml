@@ -27,9 +27,9 @@
     <string name="reponse2">ReponseQuestion 2</string>
     <string name="reponse3">ReponseQuestion 3</string>
     <string name="reponse4">ReponseQuestion 4</string>
-    <string name="QuestionTitle">Bla bla bla?</string>
+    <string name="QuestionTitle">Bla?</string>
     <string name="QuestionNumber">Numero question</string>
-    <string name="NextButton">Ok</string>
-
+    <string name="NextButton">OK</string>
+    <string name="score">Score</string>*
 
 </resources>

@@ -45,10 +45,10 @@ public class Theme_Choice_Activity extends AppCompatActivity {
             {
                 Intent intent = new Intent(Theme_Choice_Activity.this, mainQuestionnaireActivity
                         .class);
+                intent.putExtra("FROM_ACTIVITY","Entrainement");
                 setThemeChoisi(element.getThemeNumber());
                 startActivity(intent);
             }
-            Toast.makeText(Theme_Choice_Activity.this, "Selected :" + " " + element, Toast.LENGTH_LONG).show();
         });
     }
 
