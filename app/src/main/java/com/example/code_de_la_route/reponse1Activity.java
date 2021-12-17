@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,8 +12,6 @@ import android.widget.TextView;
 
 public class reponse1Activity extends AppCompatActivity {
 
-    //VILLE est la clé qui sert à récuperer la variable passée par l'autre activité
-    //il faut donc que le nom soit le meme que dans l'activite parente
     final String numberofcorrectanswer = "nombredebonnereponse";
     final String numberofanswer = "nombredereponse";
 
@@ -96,7 +93,6 @@ public class reponse1Activity extends AppCompatActivity {
 
         String score = ""+numberofincorrectanswer+" fautes sur "+allanswer;
 
-        //on écrit le résultat dans le textView de l'affichage de la réponse
         if(vueResultat != null){
             vueResultat.setText(score);
         }
