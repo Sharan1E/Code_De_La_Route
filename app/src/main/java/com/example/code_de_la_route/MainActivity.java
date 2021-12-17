@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    static int choixmode;
+    static int choixmode =0;
 
     public static int getChoixmode() {
         return choixmode;

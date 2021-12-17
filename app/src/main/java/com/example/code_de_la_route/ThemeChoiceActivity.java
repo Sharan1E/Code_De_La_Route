@@ -8,6 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -40,13 +42,18 @@ public class ThemeChoiceActivity extends AppCompatActivity {
         listView.setOnItemClickListener((a, v, position, id) -> {
             Object o = listView.getItemAtPosition(position);
             Listview_element element = (Listview_element) o;
-            if (element.getThemeNumber().equals("Thème n°1:"))
+            if (element.getThemeNumber().equals("Thème n°1:")||
+                    element.getThemeNumber().equals("Thème n°2:")||
+                    element.getThemeNumber().equals("Thème n°3:")||
+                    element.getThemeNumber().equals("Thème n°4:"))
             {
                 Intent intent = new Intent(ThemeChoiceActivity.this, QuizzActivity
                         .class);
                 MainActivity.choixmode =1;
                 setThemeChoisi(element.getThemeNumber());
                 startActivity(intent);
+            }else{
+                Toast.makeText(this,"Ce quizz n'as pas encore été implémenté par les développeurs", Toast.LENGTH_SHORT).show();
             }
         });
     }
