@@ -145,6 +145,27 @@ public class QuizzActivity extends AppCompatActivity {
         }
         if(themechoisi.equals("Thème n°4:"))
         {
+            Question_element question1_theme4 = new Question_element(“question1_theme4”, “Un motard, peut circuler : - sur la voie A”, “oui”, false, “non”, true, “- dans la zone B”, “oui”, true, “non”, false);
+            Question_element question2_theme4 = new Question_element(“question2_theme4”, “Je quitte :”, “une aire piétonne”, false, “une voie verte”, false, “une zone de rencontre”, true, “une zone 30”, false);
+            Question_element question3_theme4 = new Question_element(“question3_theme4”, “Dans cette zone, les piétons : - peuvent utiliser toute la chaussée”, “oui”, true, “non”, false, “- sont prioritaires sur tous les véhicules, sauf face aux tramways”, “oui”, true, “non”, false);
+            Question_element question4_theme4 = new Question_element(“question4_theme4”, “En empruntant cette voie, je peux croiser”, “des cyclistes”, true, “des cyclomotoristes”, false, “des motocyclistes”, false, “des automobilistes”, false);
+            Question_element question5_theme4 = new Question_element(“question5_theme4”, “Une aire piétonne est signalée par le panneau”, “n°1”, false, “n°2”, true);
+            Question_element question6_theme4 = new Question_element(“question6_theme4”, “Je suis bien placé”, “oui”, true, “non”, false);
+            Question_element question7_theme4 = new Question_element(“question7_theme4”, “Il est 10h. Je peux circuler dans cette zone :”, “si je suis à pied”, true, “si j’effectue une livraison”, true, “si j’ai un véhicule de plus de 12 t”, false);
+            Question_element question8_theme4 = new Question_element(“question8_theme4”, “Toutes les catégories d’usagers peuvent circuler dans la zone signalée par :”, “le panneau 1”, true, “le panneau 2”, false);
+            Question_element question9_theme4 = new Question_element(“question9_theme4”, “Les panneaux bleus concernent la rue à ma gauche. En tournant à gauche, je vais circuler sur une rue :”, “à double sens”, false, “à sens unique”, true, “Je risque de rencontrer”, “des cyclistes”, true, “des piétons”, true);
+            Question_element question10_theme4 = new Question_element(“question10_theme4”, “Ce panneau annonce la fin :”, “d’une sortie d’école”, false, “d’une aire piétonne”, true, “d’un passage pour piétons”, false);
+
+            quizz_theme.add(question1_theme4);
+            quizz_theme.add(question2_theme4);
+            quizz_theme.add(question3_theme4);
+            quizz_theme.add(question4_theme4);
+            quizz_theme.add(question5_theme4);
+            quizz_theme.add(question6_theme4);
+            quizz_theme.add(question7_theme4);
+            quizz_theme.add(question8_theme4);
+            quizz_theme.add(question9_theme4);
+            quizz_theme.add(question10_theme4);
 
         }
 
