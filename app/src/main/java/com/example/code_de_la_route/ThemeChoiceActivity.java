@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Theme_Choice_Activity extends AppCompatActivity {
+public class ThemeChoiceActivity extends AppCompatActivity {
 
     private static String themechoisi;
 
@@ -42,7 +42,7 @@ public class Theme_Choice_Activity extends AppCompatActivity {
             Listview_element element = (Listview_element) o;
             if (element.getThemeNumber().equals("Thème n°1:"))
             {
-                Intent intent = new Intent(Theme_Choice_Activity.this, mainQuestionnaireActivity
+                Intent intent = new Intent(ThemeChoiceActivity.this, QuizzActivity
                         .class);
                 MainActivity.choixmode =1;
                 setThemeChoisi(element.getThemeNumber());
@@ -82,7 +82,7 @@ public class Theme_Choice_Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(Theme_Choice_Activity.this, MainActivity.class);
+            Intent intent = new Intent(ThemeChoiceActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             return true;

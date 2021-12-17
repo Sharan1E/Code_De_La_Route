@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.Random;
 
 
-public class mainQuestionnaireActivity extends AppCompatActivity {
+public class QuizzActivity extends AppCompatActivity {
 
     int GoodAnswer = 0;
     //VILLE est une clé qui sert à transmettre la valeur selectionnée
@@ -60,11 +60,11 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        setContentView(R.layout.activity_monquestionnaire);
+        setContentView(R.layout.activity_quizz);
 
 
         quizz_theme = new ArrayList<>();
-        themechoisi = Theme_Choice_Activity.getThemeChoisi();
+        themechoisi = ThemeChoiceActivity.getThemeChoisi();
 
        // if(themechoisi.equals("Thème n°1:"))
         //{
@@ -208,7 +208,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             }
             else
                 {
-                    Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
+                    Intent intent = new Intent(QuizzActivity.this, ScoreActivity.class);
                     intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
                     intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
                     startActivity(intent);
@@ -261,7 +261,7 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
                     else
                     {
 
-                        Intent intent = new Intent(mainQuestionnaireActivity.this, reponse1Activity.class);
+                        Intent intent = new Intent(QuizzActivity.this, ScoreActivity.class);
                         intent.putExtra(numberofcorrectanswer, String.valueOf(GoodAnswer));
                         intent.putExtra(numberofanswer,String.valueOf(quizz_theme.size()));
                         startActivity(intent);
@@ -285,10 +285,10 @@ public class mainQuestionnaireActivity extends AppCompatActivity {
             Intent intent = new Intent();
             if (getpreviousActivity.equals("Examen Blanc"))
             {
-                 intent = new Intent(mainQuestionnaireActivity.this, MainActivity.class);
+                 intent = new Intent(QuizzActivity.this, MainActivity.class);
             }
             else
-                { intent = new Intent(mainQuestionnaireActivity.this, Theme_Choice_Activity.class);
+                { intent = new Intent(QuizzActivity.this, ThemeChoiceActivity.class);
             }
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

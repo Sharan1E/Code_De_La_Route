@@ -31,18 +31,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openInformationsActivity(){
-        Intent intent = new Intent(MainActivity.this,Informations_Activity.class);
+        Intent intent = new Intent(MainActivity.this, InformationsActivity.class);
         startActivity(intent);
     }
 
     public void openExamActivity(){
-        Intent intent = new Intent(MainActivity.this,mainQuestionnaireActivity.class);
+        Intent intent = new Intent(MainActivity.this, QuizzActivity.class);
         choixmode=0;
         startActivity(intent);
     }
 
     public void openThemeChoiceActivity(){
-        Intent intent = new Intent(MainActivity.this,Theme_Choice_Activity.class);
+        Intent intent = new Intent(MainActivity.this, ThemeChoiceActivity.class);
         choixmode=1;
         startActivity(intent);
     }

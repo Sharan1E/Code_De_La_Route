@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class reponse1Activity extends AppCompatActivity {
+public class ScoreActivity extends AppCompatActivity {
 
     final String numberofcorrectanswer = "nombredebonnereponse";
     final String numberofanswer = "nombredereponse";
@@ -19,7 +19,7 @@ public class reponse1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultats);
+        setContentView(R.layout.activity_score);
 
         Button finishbutton = findViewById(R.id.finishbutton);
         final ImageView questionImage = findViewById(R.id.imageScore);
@@ -99,7 +99,7 @@ public class reponse1Activity extends AppCompatActivity {
 
         View.OnClickListener clickSurFinish  = v ->
         {
-            Intent mintent = new Intent(reponse1Activity.this, MainActivity.class);
+            Intent mintent = new Intent(ScoreActivity.this, MainActivity.class);
             startActivity(mintent);
         };
 

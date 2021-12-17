@@ -9,17 +9,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Code_De_La_Route">
         <activity
-            android:name=".reponse1Activity"
+            android:name=".ScoreActivity"
             android:exported="true"
             android:theme="@style/Theme.Code_De_La_Route.NoActionBar"/>
         <activity
-            android:name=".mainQuestionnaireActivity"
+            android:name=".QuizzActivity"
             android:exported="true" />
         <activity
-            android:name=".Theme_Choice_Activity"
+            android:name=".ThemeChoiceActivity"
             android:exported="true" />
         <activity
-            android:name=".Informations_Activity"
+            android:name=".InformationsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
