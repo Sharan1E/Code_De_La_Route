@@ -4,7 +4,6 @@ public class Listview_element {
     private String themeName;
     private String themeNumber;
 
-    // Image name (Without extension)
     private String themelogoName;
 
     public Listview_element(String themeNumber, String themeName, String themelogoName) {

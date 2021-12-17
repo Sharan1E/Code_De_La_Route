@@ -66,8 +66,8 @@ public class QuizzActivity extends AppCompatActivity {
         quizz_theme = new ArrayList<>();
         themechoisi = ThemeChoiceActivity.getThemeChoisi();
 
-       // if(themechoisi.equals("Thème n°1:"))
-        //{
+       if(themechoisi.equals("Thème n°1:"))
+        {
             Question_element question1_theme1 = new Question_element("question1_theme1","Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
             Question_element question2_theme1 = new Question_element("question2_theme1","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
             Question_element question3_theme1 = new Question_element("question3_theme1","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
@@ -77,11 +77,25 @@ public class QuizzActivity extends AppCompatActivity {
             quizz_theme.add(question2_theme1);
             quizz_theme.add(question3_theme1);
             quizz_theme.add(question4_theme1);
+        }
 
-        //}
+        if(themechoisi.equals("Thème n°2:"))
+        {
+            Question_element question1_theme1 = new Question_element("question1_theme1","Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
+            Question_element question2_theme1 = new Question_element("question2_theme1","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
+            Question_element question3_theme1 = new Question_element("question3_theme1","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
+            Question_element question4_theme1=  new Question_element("question4_theme1","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
+
+            quizz_theme.add(question1_theme1);
+            quizz_theme.add(question2_theme1);
+            quizz_theme.add(question3_theme1);
+            quizz_theme.add(question4_theme1);
+        }
+
+
+
         ShuffleQuizzQuestion(quizz_theme);
         DisplayQuestion();
-
     }
 
     public void ShuffleQuizzQuestion(List<Question_element> quizz)
@@ -89,10 +103,8 @@ public class QuizzActivity extends AppCompatActivity {
         Random r = new Random();
         for (int i = quizz.size()-1; i >0 ; i--) {
 
-            // Pick a random index from 0 to i
             int j = r.nextInt(i);
 
-            // Swap arr[i] with the element at random index
             Question_element savequestion = quizz.get(i);
             quizz.set(i, quizz.get(j));
             quizz.set(j,savequestion);
@@ -283,7 +295,7 @@ public class QuizzActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == android.R.id.home) {
             Intent intent = new Intent();
-            if (getpreviousActivity.equals("Examen Blanc"))
+            if (MainActivity.choixmode == 0)
             {
                  intent = new Intent(QuizzActivity.this, MainActivity.class);
             }
