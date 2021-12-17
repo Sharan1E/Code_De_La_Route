@@ -68,29 +68,87 @@ public class QuizzActivity extends AppCompatActivity {
 
        if(themechoisi.equals("Thème n°1:"))
         {
-            Question_element question1_theme1 = new Question_element("question1_theme1","Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
-            Question_element question2_theme1 = new Question_element("question2_theme1","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
-            Question_element question3_theme1 = new Question_element("question3_theme1","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
-            Question_element question4_theme1=  new Question_element("question4_theme1","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
+            Question_element question1_theme1 = new Question_element("question1_theme1","Cette balise indique une priorité à droite:", "OUI",false,"NON",true);
+            Question_element question2_theme1 = new Question_element("question2_theme1","Je ralentis:", "OUI",true,"NON",false,"Je vérifie que l'usager à droite m'as bien vu:","OUI",true,"NON",false);
+            Question_element question3_theme1 = new Question_element("question3_theme1","Je cède le passage à droite:", "OUI",true,"NON",false);
+            Question_element question4_theme1 = new Question_element("question4_theme1","Je tourne à droite.Je cède le passage :", "à droite",true,"à gauche",true, "L'arrêt à l'intersection est:","obligatoire",false,"facultatif",true);
+            Question_element question5_theme1 = new Question_element("question5_theme1","Pour aborder cette intersection, le véhicule gris doit ralentir:", "OUI",true,"NON",false);
+            Question_element question6_theme1 = new Question_element("question6_theme1","Le véhicule qui passe en premier est :", "le véhicule à droite",false,"le véhicule en face",true,"moi",false);
+            Question_element question7_theme1 = new Question_element("question7_theme1","Ce panneau indique :", "un danger inconnu",false,"une priorité à  droite",true,"un stop",false);
+            Question_element question8_theme1 = new Question_element("question8_theme1"," ", "Je passe",false,"Je suis prioritaire",false,"Je cède le passage à droite",true);
+            Question_element question9_theme1 = new Question_element("question9_theme1","A la prochaine intersection, les usagers venant de droite et de gauche, devront me céder le passage :", "OUI",true,"NON",false);
+            Question_element question10_theme1 = new Question_element("question10_theme1","Les usagers arrivant des autres routes devront me céder le passage :", "sur plusieurs intersections",true,"à la prochaine intersection uniquement",false);
 
             quizz_theme.add(question1_theme1);
             quizz_theme.add(question2_theme1);
             quizz_theme.add(question3_theme1);
             quizz_theme.add(question4_theme1);
+            quizz_theme.add(question5_theme1);
+            quizz_theme.add(question6_theme1);
+            quizz_theme.add(question7_theme1);
+            quizz_theme.add(question8_theme1);
+            quizz_theme.add(question9_theme1);
+            quizz_theme.add(question10_theme1);
+
         }
 
         if(themechoisi.equals("Thème n°2:"))
         {
-            Question_element question1_theme1 = new Question_element("question1_theme1","Je vérifie si une victime respire:", "en vérifiant si son torse se soulève",true,"en lui faisant du bouche à bouche",false,"en écoutant son souffle,en me rapprochant de son visage",true);
-            Question_element question2_theme1 = new Question_element("question2_theme1","A chaque nouveau départ je vérifie:", "qu'il n'y a pas de trace d'huile sous le véhicule",true,"le réglage des suspensions",false,"la propreté des plaques et des feux", true,"qu'aucun pneu n'est dégonflé",true);
-            Question_element question3_theme1 = new Question_element("question3_theme1","Cet usager: -est un véhicule d'intérêt général prioritaire","oui",false,"non",true,"- bénéficie de facilités de passages","oui",true,"non",false);
-            Question_element question4_theme1=  new Question_element("question4_theme1","L'intervalle de sécurité après le véhicule qui nous précède est:","suffisant",true,"faible",false);
 
-            quizz_theme.add(question1_theme1);
-            quizz_theme.add(question2_theme1);
-            quizz_theme.add(question3_theme1);
-            quizz_theme.add(question4_theme1);
+            Question_element question1_theme2 = new Question_element("question1_theme2","J'anticipe en mettant le pied devant le frein immédiatement :", "OUI",true,"NON",false,"Je cèderai le passage :","à gauche",true,"à droite",true);
+            Question_element question2_theme2 = new Question_element("question2_theme2","Quelle est la situation la plus dangereuse ?", "La situation 1",false,"La situation 2",true);
+            Question_element question3_theme2 = new Question_element("question3_theme2"," ", "Je maintiens l'allure",false,"je me place sur lavoie centrale",false,"je ralentis",true,"J'allume les feux de détresse",true);
+            Question_element question4_theme2 = new Question_element("question4_theme2","L'adhérence risque d'être réduite :", "OUI",true,"NON",true,"Je roule au maximum de la vitesse autorisée :","OUI",false,"NON",true);
+            Question_element question5_theme2 = new Question_element("question5_theme2"," ", "J'accèlère",false,"ou je ralentis",true);
+            Question_element question6_theme2 = new Question_element("question6_theme2","L'oubli des clignotants pour indiquer un changement de direction peut être sanctionné par une amende et un retrait de points :", "OUI",true,"NON",false);
+            Question_element question7_theme2 = new Question_element("question7_theme2","Pour signaler mon intention d'emprunter l'emplacement à droite :", "je freine fort",false,"j'active les clignotans",false);
+            Question_element question8_theme2 = new Question_element("question8_theme2","Pour signaler ma présence à cette intersection : - je klaxonne", "le jour",true,"la nuit",true,"je fais un appel lumineux","le jour",false,"la nuit",true);
+            Question_element question9_theme2 = new Question_element("question9_theme2","Je circule à 130 km/h.", "je maintiens l'allure",false,"je ralentis",true,"la distance de sécurité est :","suffisante",false,"insuffisante",false);
+            Question_element question10_theme2 = new Question_element("question10_theme2","Pendant le temps de réaction, le véhicule continue d'avancer à la même vitesse :","OUI",true,"NON",false);
+
+            quizz_theme.add(question1_theme2);
+            quizz_theme.add(question2_theme2);
+            quizz_theme.add(question3_theme2);
+            quizz_theme.add(question4_theme2);
+            quizz_theme.add(question5_theme2);
+            quizz_theme.add(question6_theme2);
+            quizz_theme.add(question7_theme2);
+            quizz_theme.add(question8_theme2);
+            quizz_theme.add(question9_theme2);
+            quizz_theme.add(question10_theme2);
+
         }
+        if(themechoisi.equals("Thème n°3:"))
+        {
+            Question_element question1_theme3 = new Question_element("question1_theme3","Pour voir loin devant moi, j’utilise :", "les feux de position seuls", false, "les feux de croisement", false, "les feux de route", true, "les feux de brouillard arrière", false);
+            Question_element question2_theme3 = new Question_element("question2_theme3", "La visibilité est réduite. J’allume :", "les feux de position seuls", false, "les feux de croisement", true, "Je peux rouler sans feux", false);
+            Question_element question3_theme3 = new Question_element("question3_theme3", "Dans cette situation, j’utilise les feux de croisement essentiellement pour :", "voir", false, "ou être vu", true);
+            Question_element question4_theme3 = new Question_element("question4_theme3", "La nuit : - le champ visuel est réduit", "oui", true, "non", false, "- la perception de la profondeur augmente", "oui", false, "non", true);
+            Question_element question5_theme3 = new Question_element("question5_theme3", "Dans cette situation, j’allume les feux de position : - pour voir", "oui", false, "non", true, "- pour être vu", "oui", true, "non", false);
+            Question_element question6_theme3 = new Question_element("question6_theme3", "L’aquaplanage : - c’est quand l’eau", "n’est plus évacuée par le pneu", true, "est évacuée trop brusquement par le pneu", false, "- entraîne", "le blocage des pneus", false, "une perte de contrôle du véhicule", true);
+            Question_element question7_theme3 = new Question_element("question7_theme3", "Il pleut fortement. j’allume :", "les feux de position seuls", false, "les feux de croisement", true, "les feux de route", false, "les feux de brouillard avant", true);
+            Question_element question8_theme3 = new Question_element("question8_theme3", "Ma visibilité est inférieure à 50m, je roule au maximum à :", "90 km/h", false, "70 km/h", false, "50 km/h", true);
+            Question_element question9_theme3 = new Question_element("question9_theme3", "Dans ces conditions : - j’utilise les feux de brouillard", "avant", true, "arrière", true, "- je circule à 50 km/h", "oui", false, "non", true);
+            Question_element question10_theme3 = new Question_element("question10_theme3", "J’utilise des chaînes à neige. il est conseillé de ne pas dépasser :", "90 km/h", false, "50 km/h", true);
+
+            quizz_theme.add(question1_theme3);
+            quizz_theme.add(question2_theme3);
+            quizz_theme.add(question3_theme3);
+            quizz_theme.add(question4_theme3);
+            quizz_theme.add(question5_theme3);
+            quizz_theme.add(question6_theme3);
+            quizz_theme.add(question7_theme3);
+            quizz_theme.add(question8_theme3);
+            quizz_theme.add(question9_theme3);
+            quizz_theme.add(question10_theme3);
+
+        }
+        if(themechoisi.equals("Thème n°4:"))
+        {
+
+        }
+
+
 
 
 
